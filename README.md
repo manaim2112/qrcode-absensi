@@ -9,5 +9,10 @@ Proses Absensi yang begitu mudah, tidak memerlukan instalasi yang begitu rumah. 
 2. pastikan saat membuka memakai server
 3. Selesai
 
+## fitur
+1. Pengelolahan datanya menggunakan `localStorage` pada browser, jadi pastikan di periksa datanya disitu
+2. javascript base
+3. Simple and Light
+
 Thanks
 
