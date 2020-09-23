@@ -1,0 +1,28 @@
+body {
+    margin:0;
+    font-size : 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#qr-reader {
+    width: 500px; 
+    margin: 50px auto; 
+    padding: 0px; 
+    border: 1px solid silver;
+    background-color: #f7f7f7;
+    box-shadow: -10px 20px 20px 0px #aaa;
+}
+.data {
+    width: 100%;
+    padding:30px;
+    margin:0 auto;
+    display: block;
+}
+table {
+    padding : 5px;
+    border:1px solid #000;
+    width: 100%;
+}
+table thead {
+    border-bottom: 1px solid #000;
+}

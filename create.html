@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi by Qrcode</title>
+    <style>
+        body {
+            font-size : 1rem;
+            background-color: #f5f0f0;
+        }
+        input {
+            display: block;
+            padding : 10px;
+            width: clamp(300px, 10vw, 500px);
+            border : 1px solid #000;
+            box-shadow: 1px 1px #aaa;
+            margin:10px auto;
+            font-size : 20px;
+        }
+        button {
+            font-size: 20px;
+            font-weight: bold;
+            padding : 1rem;
+        }
+        img {
+            margin : 0 auto;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    <div style="position:relative;top:30vh;">
+        <h1>Qrcode</h1>
+        <br>
+        <input type="number" id="code" placeholder="Kode guru">
+        <input type="text" name="" id="name" placeholder="Nama Guru">
+        <button id="save"> Buat </button>
+    </div>
+      
+      
+      <script src="./src/qrcode.min.js"></script>
+      <script src="./src/sweetalert2.all.min.js"></script>
+      <script type="text/javascript">
+        document.getElementById('save').addEventListener('click',(e) => {
+          let code = document.getElementById('code').value,
+              name = document.getElementById('name').value;
+            function alerts(text) {
+                Swal.fire('Oppss...', text, 'error');
+            }
+          if(code == '') { return alerts('kode guru belum di isi'); }
+          if(name == '') { return alerts('Nama guru belum di isi'); }
+    
+          let data = { id : code, name : name, sandi : 'supel1994' };
+          Swal.fire({
+              title : 'Qrcode',
+              text : 'Selamat, anda telah terdaftaf',
+              html : `<div id="qrcode"></div><br> <strong>${name}</strong>`
+          })
+          new QRCode(document.getElementById("qrcode"), JSON.stringify(data));
+          
+        })
+      </script>
+</body>
+</html>
