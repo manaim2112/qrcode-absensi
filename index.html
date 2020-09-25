@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>QRcode Absensi</title>
+  <link rel="stylesheet" href="./main.css">
 </head>
 <body style="text-align: center;">
   <div style="position:relative;top:30vh;">
@@ -13,24 +14,12 @@
     <button id="save" onclick="link('./verify.html')"> Konfimasi data </button>
 
   </div>
-  <div id="qrcode"></div>
-  
-  <script src="./src/qrcode.min.js"></script>
+
   <script type="text/javascript">
   function link(folder) {
     window.location.href = folder;
   }
-    document.getElementById('save').addEventListener('click',(e) => {
-      let code = document.getElementById('code').value,
-          name = document.getElementById('name').value;
 
-      if(code == '') { return alert('kode guru belum di isi'); }
-      if(name == '') { return alert('Nama guru belum di isi'); }
-
-      let data = { id : code, name : name, sandi : 'supel1994' };
-      new QRCode(document.getElementById("qrcode"), JSON.stringify(data));
-      
-    })
   </script>
 </body>
 </html>

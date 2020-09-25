@@ -4,33 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absensi by Qrcode</title>
-    <style>
-        body {
-            font-size : 1rem;
-            background-color: #f5f0f0;
-        }
-        input {
-            display: block;
-            padding : 10px;
-            width: clamp(300px, 10vw, 500px);
-            border : 1px solid #000;
-            box-shadow: 1px 1px #aaa;
-            margin:10px auto;
-            font-size : 20px;
-        }
-        button {
-            font-size: 20px;
-            font-weight: bold;
-            padding : 1rem;
-        }
-        img {
-            margin : 0 auto;
-        }
-    </style>
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body style="text-align: center;">
     <div style="position:relative;top:30vh;">
-        <h1>Qrcode</h1>
+        <h1>QRcode</h1>
         <br>
         <input type="number" id="code" placeholder="Kode guru">
         <input type="text" name="" id="name" placeholder="Nama Guru">
@@ -41,24 +19,39 @@
       <script src="./src/qrcode.min.js"></script>
       <script src="./src/sweetalert2.all.min.js"></script>
       <script type="text/javascript">
-        document.getElementById('save').addEventListener('click',(e) => {
-          let code = document.getElementById('code').value,
-              name = document.getElementById('name').value;
-            function alerts(text) {
-                Swal.fire('Oppss...', text, 'error');
-            }
-          if(code == '') { return alerts('kode guru belum di isi'); }
-          if(name == '') { return alerts('Nama guru belum di isi'); }
-    
-          let data = { id : code, name : name, sandi : 'supel1994' };
-          Swal.fire({
-              title : 'Qrcode',
-              text : 'Selamat, anda telah terdaftaf',
-              html : `<div id="qrcode"></div><br> <strong>${name}</strong>`
-          })
-          new QRCode(document.getElementById("qrcode"), JSON.stringify(data));
-          
-        })
+        function alerts(text) {
+            Swal.fire('Oppss...', text, 'error');
+        }
+
+        function save() {
+            let code = document.getElementById('code').value,
+                name = document.getElementById('name').value;
+            if(code == '') { return alerts('kode guru belum di isi'); }
+            if(name == '') { return alerts('Nama guru belum di isi'); }
+      
+            return fetch('./data.json').then(res => res.json()).then((event) => {
+                
+                let data = { id : code, name : name, secure : event.secure};
+                Swal.fire({
+                    title : 'QRcode',
+                    text : 'Selamat, anda telah terdaftaf',
+                    html : `<div id="qrcode"></div><br> <strong>${name}</strong>`,
+                    width : '80%'
+                });
+
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                    text: JSON.stringify(data),
+                    width: 640,
+                    height: 640,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            });
+        }
+                
+        document.getElementById('save').addEventListener('click', save);
+
       </script>
 </body>
 </html>
