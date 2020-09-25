@@ -10,30 +10,15 @@ Proses Absensi yang begitu mudah, tidak memerlukan instalasi yang begitu rumah. 
 3. Selesai
 
 ## recomended Instalation
-1. Download [nodejs](https://nodejs.org/) dan install
-2. buka command line (cmd) 
-```base
-cd yourfolder
-```
-3. git repo
+1. Download [laragon](https://laragon.org/download/) dan install
+
+2. git repo di htdocs
 ```base
 git clone https://github.com/manaim2112/qrcode-absensi.git
 ```
 atau download langsung di ``` https://github.com/manaim2112/qrcode-absensi.git ``` taruh di dalam ``` yourfolder ```
 
-4. install
-```base 
-npm init -y
-npm install --save-dev lite-server
-```
-pada ``` package.json ``` edit dan tambahkan
-```base
-"scripts": { "start": "lite-server"},
-```
-kemudian 
-```base 
-npm start
-```
+
  
 
 
