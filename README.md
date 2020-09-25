@@ -14,5 +14,9 @@ Proses Absensi yang begitu mudah, tidak memerlukan instalasi yang begitu rumah. 
 2. javascript base
 3. Simple and Light
 
-Thanks
+## Update
+- Coloring
+- otomatis download jika melebihi 1 hari
 
+Thanks
+Donation ? 
